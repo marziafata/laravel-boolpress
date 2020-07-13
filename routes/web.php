@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 
-//home page pubblica che ha una rotta standard come quelle viste fino ad ora
+//Rotta che mappa la home page pubblica che ha una rotta standard come quelle viste fino ad ora
 Route::get('/', 'HomeController@index')->name('home');
 
-//home page con un prefisso admin
+//Rotta che mappa la home page dell'amministratore
 Route::prefix('admin')
     ->namespace('Admin')
     ->name('admin.')
