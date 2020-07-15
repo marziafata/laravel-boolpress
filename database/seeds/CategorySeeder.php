@@ -15,8 +15,8 @@ class CategorySeeder extends Seeder
     {
         for ($i=0; $i < 5 ; $i++) {
             $new_category = new Category();
-            $new_category->name = $faker->unique()->word;
-            $new_category->slug = $new_category->name;
+            $new_category->name = $faker->unique()->state;
+            $new_category->slug = strtolower($new_category->name);
             $new_category->save();
         }
     }
