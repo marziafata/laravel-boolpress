@@ -43,22 +43,9 @@ class PostController extends Controller
             'title' => 'required|max:255|unique:posts,title',
             'content' => 'required'
         ]);
+
         $dati = $request->all();
 
-        // //genero lo slug a partire dal titolo
-        // $slug = Str::of($dati['title'])->slug('-');
-        // $slug_iniziale = $slug;
-        // //verifico che lo slug sia unico
-        // $post_trovato = Post::where('slug', $slug)->first();
-        // $contatore = 0;
-        // while($post_trovato) {
-        //     $contatore++;
-        //     //genero il nuovo slug concatenando il contatore
-        //     $slug = $slug_iniziale . '-' . $contatore;
-        //     $post_trovato = Post::where('slug', $slug)->first();
-        // }
-        // //adesso sono sicura che lo slug sia unico
-        // $dati['slug'] = $slug;//slug finale
         $dati['slug'] = generaSlug($dati);//slug finale
 
         $nuovo_post = new Post();

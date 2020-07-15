@@ -19,6 +19,8 @@ Auth::routes();
 
 //Rotta che mappa la home page pubblica che ha una rotta standard come quelle viste fino ad ora
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/posts', 'PostController@index')->name('posts');
+Route::get('/posts/{slug}', 'PostController@show')->name('posts.show');
 
 //Rotta che mappa la home page dell'amministratore
 Route::prefix('admin')

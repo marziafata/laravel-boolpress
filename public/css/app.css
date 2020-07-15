@@ -10928,3 +10928,7 @@ a.text-dark:focus {
   }
 }
 
+.active {
+  color: #4dc0b5;
+}
+
