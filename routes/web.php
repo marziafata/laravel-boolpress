@@ -21,8 +21,9 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/posts', 'PostController@index')->name('posts');
 Route::get('/posts/{slug}', 'PostController@show')->name('posts.show');
-Route::get('/categories/{slug}', 'CategoryController@show')->name('categories.show');
+Route::get('/categories/{slug}', 'CategoryController@show')->name('posts.category');
 Route::get('/categories', 'CategoryController@index')->name('categories.index');
+Route::get('/categories/{slug}', 'PostController@category')->name('posts.category');
 
 
 //Rotta che mappa la home page dell'amministratore
