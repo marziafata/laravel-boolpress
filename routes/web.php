@@ -17,10 +17,13 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 
-//Rotta che mappa la home page pubblica che ha una rotta standard come quelle viste fino ad ora
+//Rotte pubbliche
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/posts', 'PostController@index')->name('posts');
 Route::get('/posts/{slug}', 'PostController@show')->name('posts.show');
+Route::get('/categories/{slug}', 'CategoryController@show')->name('categories.show');
+Route::get('/categories', 'CategoryController@index')->name('categories.index');
+
 
 //Rotta che mappa la home page dell'amministratore
 Route::prefix('admin')

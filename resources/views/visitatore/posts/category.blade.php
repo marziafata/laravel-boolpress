@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1>Elenco Post</h1>
+            <h1>Post nella categoria: {{ $category->name }}</h1>
             <ul>
                 @foreach ($posts as $post)
                 <li>
@@ -15,9 +15,6 @@
                 @endforeach
             </ul>
         </div>
-        <a href="{{ route('categories.index') }}">
-            Vai alle categorie
-        </a>
     </div>
 </div>
 @endsection
