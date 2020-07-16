@@ -40,6 +40,26 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="form-group">
+                        Tag:
+                        @foreach ($tags as $tag)
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input
+                                        @if($errors->any())
+                                            {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }}
+                                        @else
+                                            {{ $post->tags->contains($tag) ? 'checked' : '' }}
+                                        @endif
+                                        class="form-check-input"
+                                        name="tags[]"
+                                        type="checkbox"
+                                        value="{{ $tag->id }}">
+                                    {{ $tag->name }}
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
                     <button type="submit" class="btn btn-primary">Salva</button>
                 </form>
             </div>
