@@ -15,9 +15,9 @@
                 @endforeach
             </ul>
         </div>
-        {{-- <a href="{{ route('posts.show', ['slug' => $post->slug]) }}">
+        <a href="{{ route('posts') }}">
             Vai ai post
-        </a> --}}
+        </a>
     </div>
 </div>
 @endsection
