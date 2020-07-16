@@ -59,8 +59,11 @@ class PostController extends Controller
         $nuovo_post = new Post();
         $nuovo_post->fill($dati);
         $nuovo_post->save();
+        // se l'utente ha selezionato dei tag li associo al post
+        if(!empty($dati['tags'])) {
+            $nuovo_post->tags()->sync($dati['tags']);
+        }
 
-        $nuovo_post->tags()->sync($dati['tags']);
         return redirect()->route('admin.posts.index');
     }
 
