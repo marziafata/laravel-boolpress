@@ -22,7 +22,7 @@ class CategoryController extends Controller
                 'category' => $category,
                 'posts' => $posts
             ];
-            return view('visitatore.categories.show', $data);
+            return view('visitatore.posts.category', $data);
         } else {
             return abort('404');
         }

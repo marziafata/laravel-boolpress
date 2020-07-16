@@ -16,7 +16,7 @@ class PostController extends Controller
     public function show($slug) {
         $post = Post::where('slug', $slug)->first();
         if($post) {
-            return view('visitatore.posts.show', compact('post'));
+            return view('visitatore.posts.category', compact('post'));
         } else {
             return abort('404');
         }
