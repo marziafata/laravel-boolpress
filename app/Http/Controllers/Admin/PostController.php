@@ -131,6 +131,13 @@ class PostController extends Controller
 
         $dati['slug'] = generaSlug($dati);
 
+        // verifico se l'utente ha caricato una foto
+        if($dati['image']) {
+            // carico l'immagine
+            $img_path = Storage::put('uploads', $dati['image']);
+            $dati['cover_image'] = $img_path;
+        }
+
         $post = Post::find($id);
         $post->update($dati);
 

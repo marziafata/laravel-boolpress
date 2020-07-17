@@ -16,12 +16,22 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="post">
+                <form action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <label for="titolo">Titolo</label>
                         <input type="text" name="title" class="form-control" id="titolo" placeholder="Titolo post" value="{{ old('title', $post->title) }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="immagine">Immagine di copertina</label>
+                        <input type="file" name="image" class="form-control-file">
+                        @if($post->cover_image)
+                            <p>Copertina presente</p>
+                            <img src="{{ asset('storage/' . $post->cover_image) }}">
+                        @else
+                            <p>copertina non presente</p>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="testo">Testo articolo</label>

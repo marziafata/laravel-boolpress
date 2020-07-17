@@ -25,6 +25,8 @@ Route::get('/categories/{slug}', 'CategoryController@show')->name('posts.categor
 Route::get('/categories', 'CategoryController@index')->name('categories.index');
 Route::get('/categories/{slug}', 'PostController@category')->name('posts.category');
 
+Route::get('/contatti', 'HomeController@contatti')->name('contact.show');
+Route::post('/contatti', 'HomeController@contattiStore')->name('contact.store');
 
 //Rotta che mappa la home page dell'amministratore
 Route::prefix('admin')
