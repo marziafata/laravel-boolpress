@@ -8,6 +8,7 @@ use App\Post;
 use App\Category;
 use App\Tag;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -49,16 +50,26 @@ class PostController extends Controller
         //validazione dati
         $request->validate([
             'title' => 'required|max:255|unique:posts,title',
-            'content' => 'required'
+            'content' => 'required',
+            'image' => 'image|max:1024'
         ]);
 
         $dati = $request->all();
 
         $dati['slug'] = generaSlug($dati);//slug finale
 
+        // verifico se l'utente ha caricato una foto
+        if($dati['image']) {
+            // carico l'immagine
+            $img_path = Storage::put('uploads', $dati['image']);
+            $dati['cover_image'] = $img_path;
+        }
+
+        // salvo i dati del post
         $nuovo_post = new Post();
         $nuovo_post->fill($dati);
         $nuovo_post->save();
+
         // se l'utente ha selezionato dei tag li associo al post così non da più errore se non seleziona niente
         if(!empty($dati['tags'])) {
             $nuovo_post->tags()->sync($dati['tags']);
